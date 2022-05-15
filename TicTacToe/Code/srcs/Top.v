@@ -206,15 +206,17 @@ module Top(
                        
                 
                 //downcounter to display games remaining
-                always@(posedge gameover[9])
+                always@(posedge gameover[9] or posedge rst)
                     begin
-                        if(roundsremaining==0) 
+                        if(rst)
+                            roundsremaining<=0;
+                        else if(roundsremaining==0) 
                             roundsremaining <= 9;
                         else if(~gameover[9])    
                             roundsremaining <= roundsremaining;
                         else
                             roundsremaining <= roundsremaining - 1;    
-                    end  
+                    end 
                     
                     
                  assign To_display[19:16] = roundsremaining;
