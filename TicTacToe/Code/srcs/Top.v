@@ -184,7 +184,7 @@ module Top(
                 #(.VC(2'b10))    
                 Score1(
                     .clk(clk), 
-                    .reset_n(rst||roundsremaining==0),
+                    .reset_n(rst||roundsremaining==9),
                     .x(gameover[9:8]),
                     .num(player1_score)
                     );
@@ -193,7 +193,7 @@ module Top(
                 #(.VC(2'b11))     
                 Score2(
                     .clk(clk), 
-                    .reset_n(rst||roundsremaining==0),
+                    .reset_n(rst||roundsremaining==9),
                     .x(gameover[9:8]),
                     .num(player2_score)
                     );    
@@ -209,7 +209,7 @@ module Top(
                 always@(posedge gameover[9] or posedge rst)
                     begin
                         if(rst)
-                            roundsremaining<=0;
+                            roundsremaining <= 9;
                         else if(roundsremaining==0) 
                             roundsremaining <= 9;
                         else if(~gameover[9])    
