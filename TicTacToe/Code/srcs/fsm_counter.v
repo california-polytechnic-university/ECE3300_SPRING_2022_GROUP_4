@@ -34,11 +34,10 @@ module fsm_counter
                 s8 = 8, s9 = 9;   
     
     // State register
-    always @(posedge clk, negedge reset_n)
+    always @(posedge clk or negedge reset_n)
     begin
         if (reset_n)
-            state_reg <= s0;
-            
+            state_reg <= 0;
         else
             state_reg <= state_next;
     end
@@ -65,5 +64,5 @@ module fsm_counter
     end
     
     // Output logic
-    assign num = state_reg;
+    assign num = reset_n ? 0 : state_reg;
 endmodule
