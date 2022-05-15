@@ -174,7 +174,7 @@ module Top(
                 end
 
                 
-
+                reg [3:0] roundsremaining=4'd9; 
                 
                 wire [31:0] To_display;
                 wire [3:0] player1_score;
@@ -184,7 +184,7 @@ module Top(
                 #(.VC(2'b10))    
                 Score1(
                     .clk(clk), 
-                    .reset_n(rst),
+                    .reset_n(rst||roundsremaining==0),
                     .x(gameover[9:8]),
                     .num(player1_score)
                     );
@@ -193,7 +193,7 @@ module Top(
                 #(.VC(2'b11))     
                 Score2(
                     .clk(clk), 
-                    .reset_n(rst),
+                    .reset_n(rst||roundsremaining==0),
                     .x(gameover[9:8]),
                     .num(player2_score)
                     );    
@@ -203,7 +203,7 @@ module Top(
                 assign To_display[3:0] = player1_score;     
                 assign To_display[11:8] = player2_score;    
                 
-                reg [3:0] roundsremaining=4'd9;        
+                       
                 
                 //downcounter to display games remaining
                 always@(posedge gameover[9])
