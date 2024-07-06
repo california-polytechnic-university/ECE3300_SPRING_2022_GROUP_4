@@ -1,15 +1,15 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: California State Polytechnic University, Pomona
+// Engineer: Joseph Popoviciu
 // 
 // Create Date: 05/13/2022 04:12:26 PM
 // Design Name: 
 // Module Name: btn_cntrl
-// Project Name: 
-// Target Devices: 
+// Project Name: TicTacToe
+// Target Devices: Nexys Artix-7
 // Tool Versions: 
-// Description: 
+// Description:
 // 
 // Dependencies: 
 // 
